@@ -11,8 +11,9 @@ def main(request):
 
 def check_get(requst):
      template_name = 'cloud/search.html'
-     search1 = request.GET.get('search',None)
-     keword1 = request.GET.get('',None)
+     search1 = request.GET.get('search1',None)
+     search2 = request.GET.get('search2',None)
+     keyword1 = request.GET.get('keyword',None)
      #db 설정하는거 입력
      firstreview  = FirstReview.object.all()
      secondreview = SecondReview.object.all()
@@ -59,7 +60,8 @@ def check_get(requst):
                 if contents.get_text().find(keyword1)>=0:
                     firstreview=FirstReview()
                     firstreview.review1=content.get_text()
-                    firstreview.review1=url
+                    firstreview.url1=url
+                    firstreview.save()
      
      searchurl = 'https://search.naver.com/search.naver?where=post&sm=tab_jum&query='
      searchurl += search2+' '+keyword1;
@@ -101,5 +103,6 @@ def check_get(requst):
                     secondreview=SecondReview()
                     secondreview.review2=contents.get_text()
                     secondreview.url2=url
+                    secondreview.save()
            
      return render(request, template_name,context)
