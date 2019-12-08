@@ -55,8 +55,10 @@ def check_get(request):
                  if contents.get_text().find(keyword1)>=0:
                      freview=Review()
                      freview.review1=contents.get_text()
-                     freview.url=url
+                     #freview.url=url
                      freview.save()
+             freview.url=url
+             freview.save()
      searchurl = 'https://search.naver.com/search.naver?where=post&sm=tab_jum&query='
      searchurl += search2+" "+keyword1;
      response = requests.get(searchurl)
@@ -91,8 +93,9 @@ def check_get(request):
                  if contents.get_text().find(keyword1)>=0:
                      sreview=SReview()
                      sreview.review=contents.get_text()
-                     sreview.url=url
+                     #sreview.url=url
                      sreview.save()
-
+             sreview.url=url
+             sreview.save()
      return render(request,template_name,context)
      
