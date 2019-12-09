@@ -1,0 +1,22 @@
+table{/*table in section tag*/
+   border:3px solid white;
+   border-spacing:10px;
+}
+table th{/* table head in table in section tag*/
+   border:3px solid white;
+   text-align:center;
+   margin:10px;
+}
+table tr td{
+   border:2px solid white;
+   text-align:center;
+        color: white;
+}
+.divleftright{
+   display : flex;
+   flex-wrap: wrap;
+}
+.content-div{
+   padding-bottom:30px;
+   width:100%;
+}

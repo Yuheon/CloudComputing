@@ -1,22 +1,71 @@
+{% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-   <meta charset="UTF-8">
-   <title>Main</title>
-</head>
-<body>
-   <div align = "center">
-      <h1>메인</h1>
-      <div>
-         <form method = "get" action="{% url 'cloud:search_get' %}">
-            <input type = "text" name="search1">
-	    <input type = "text" name="search2">
-            <input type = "text" name="keyword">
-            <input type="submit" value="Search">
-         </form>
-      
-       </div>
-   </div>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Product Compare</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="{% static 'cloud/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="{% static 'cloud/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+  <link href="{% static 'cloud/vendor/simple-line-icons/css/simple-line-icons.css' %}" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
    
+  <!-- Custom styles for this template -->
+  <link href="{% static 'cloud/css/landing-page.min.css' %}" rel="stylesheet">
+
+  <!-- <link rel="stylesheet" type="text/css" href="{% static 'cloud/style.css' %}"> -->
+ 
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-light bg-light static-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">Product Compare</a>
+    </div>
+  </nav>
+
+  <!-- Masthead -->
+  <header class="masthead text-white text-center">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-9 mx-auto">
+          <h1 class="mb-5">Product Compare</h1>
+        </div>
+        <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
+          <form method = "get" action="{% url 'cloud:search_get' %}">
+            <div class="form-row">
+              <div class="col-12 col-md-12 mb-2 mb-md-3">
+                <h4>product1 : </h4><input type="text" class="form-control form-control-lg" placeholder="search" name="search1">
+              </div>
+           <div class="col-12 col-md-12 mb-2 mb-md-3">
+                <h4>product2 : </h4><input type="text" class="form-control form-control-lg" placeholder="search" name="search2">
+              </div>
+           <div class="col-12 col-md-12 mb-2 mb-md-3">
+                <h4>keyword : </h4><input type="text" class="form-control form-control-lg" placeholder="keyword" name="keyword">
+              </div>
+              <div class="col-12 col-md-12 mb-2 mb-md-3">
+                <button type="submit" class="btn btn-block btn-lg btn-primary">Search</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
 </body>
+
 </html>

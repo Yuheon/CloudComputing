@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Review, SReview, Rank, Shopping
+from .models import Review, SReview, Rank, Shopping, Shopping2
 from django.views import generic
 from bs4 import BeautifulSoup
 from django.http import HttpResponse
@@ -20,14 +20,17 @@ def check_get(request):
      sreviews = SReview.objects.all()
      ranks = Rank.objects.all()
      shoppings = Shopping.objects.all()
+     shoppings2= Shopping2.objects.all()
      context = {'reviews' : reviews,
              'sreviews' : sreviews,
              'ranks' : ranks,
-             'shoppings' : shoppings}
+             'shoppings' : shoppings,
+             'shoppings2' : shoppings2}
      reviews.delete()
      sreviews.delete()
      ranks.delete()
      shoppings.delete()
+     shoppings2.delete()
      searchurl = 'https://search.naver.com/search.naver?where=post&sm=tab_jum&query='
      searchurl += search1+" "+keyword1;
      #searchrank =  'https://search.naver.com/search.naver?where=post&sm=tab_jum&query=' # 검색어 순위를 따로 크롤링 하기위한 url 저장
@@ -114,15 +117,20 @@ def check_get(request):
      soup = BeautifulSoup(html, 'html.parser')
      
      search=soup.find("ol")
+     print(search)
      search = str(search.find_all('span',{'class':'tit'}))
      search = re.sub('<.+?>','', search, 0).strip()
      search = re.sub(',','',search,0).strip()
      search = search.replace('[','')
+     search = search.replace(']','')
      search.split(' ')
+     count=1
      for i in range(10):
          rank=Rank()
          rank.pname=search.split(' ')[i]
+         rank.rank=count
          rank.save()
+         count=count+1
 
      url = 'https://search.shopping.naver.com/search/all.nhn?query='
      url += search1;
@@ -137,9 +145,9 @@ def check_get(request):
      titleList = []
      detailList = []
      priceList = []
+     urlList = []
      li = soup.find_all('li', {'class': '_itemSection'})
      for i in li:
-         shop=Shopping()
          imgLink = i.find('img', {'class': '_productLazyImg'})
          imgList.append(imgLink.get('data-original'))
 
@@ -154,12 +162,15 @@ def check_get(request):
              detailList.append(detail.get_text())
          else:
              detailList.append('')
+         urls = i.find('a', {'class': 'link'})
+         urlList.append(urls.get('href'))
      for i in range(5):
          shop=Shopping()
          shop.img = imgList[i]
          shop.title = titleList[i]
          shop.detail = detailList[i]
          shop.price = priceList[i]
+         shop.url = urlList[i]
          shop.save()
      url = 'https://search.shopping.naver.com/search/all.nhn?query='
      url += search2;
@@ -173,10 +184,9 @@ def check_get(request):
      del titleList[:]
      del detailList[:]
      del priceList[:]
-    
+     del urlList[:]
      li = soup.find_all('li', {'class': '_itemSection'})
      for i in li:
-         shop=Shopping()
          imgLink = i.find('img', {'class': '_productLazyImg'})
          imgList.append(imgLink.get('data-original'))
 
@@ -191,12 +201,16 @@ def check_get(request):
              detailList.append(detail.get_text())
          else:
              detailList.append('')
+         urls = i.find('a', {'class': 'link'})
+         urlList.append(urls.get('href'))
+    
      for i in range(5):
-         shop=Shopping()
+         shop=Shopping2()
          shop.img = imgList[i]
          shop.title = titleList[i]
          shop.detail = detailList[i]
          shop.price = priceList[i]
+         shop.url = urlList[i]
          shop.save()
 
      return render(request,template_name,context)
