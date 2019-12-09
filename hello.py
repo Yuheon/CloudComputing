@@ -1,2 +1,0 @@
-res ='hello'
-print(res)
