@@ -62,3 +62,5 @@
   ![22](https://user-images.githubusercontent.com/43310063/70493352-b9fb3780-1b4a-11ea-879b-a6720855d023.JPG)
   ![33](https://user-images.githubusercontent.com/43310063/70493355-bb2c6480-1b4a-11ea-9323-499238b956c3.JPG)
 
+ ## merge 오류, history가 겹치지 않은 상태에서 merge를 시도하다가 commit과 branch가 사라졌습니다.
+ ![44](https://user-images.githubusercontent.com/43310063/70497415-61319c00-1b56-11ea-826f-84b90711b848.JPG)
