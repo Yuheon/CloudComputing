@@ -53,4 +53,12 @@
              '자신의 ip 등록'
       ]
   
+  ## URL
+  http://ec2-35-171-18-79.compute-1.amazonaws.com:8000/#
   
+  ## 실행결과
+  ![main](https://user-images.githubusercontent.com/43310063/70493292-7bfe1380-1b4a-11ea-8af0-156b9bffc8d6.JPG)
+  ![11](https://user-images.githubusercontent.com/43310063/70493349-b7004700-1b4a-11ea-9fe4-414c8fa60c54.JPG)
+  ![22](https://user-images.githubusercontent.com/43310063/70493352-b9fb3780-1b4a-11ea-879b-a6720855d023.JPG)
+  ![33](https://user-images.githubusercontent.com/43310063/70493355-bb2c6480-1b4a-11ea-9323-499238b956c3.JPG)
+
